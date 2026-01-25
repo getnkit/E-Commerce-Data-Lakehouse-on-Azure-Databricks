@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-ecommerce-lakehouse"
+		},
+		"ls_adls_ecommerce_lakehouse_accountKey": {
+			"value": ""
+		},
+		"ls_sql_ecommerce_lakehouse_password": {
+			"value": ""
+		},
+		"ls_adls_ecommerce_lakehouse_properties_typeProperties_url": {
+			"value": "https://stecommercelakehouse.dfs.core.windows.net/"
+		},
+		"ls_sql_ecommerce_lakehouse_properties_typeProperties_server": {
+			"value": "sql-srv-ecommerce-lakehouse.database.windows.net"
+		},
+		"ls_sql_ecommerce_lakehouse_properties_typeProperties_database": {
+			"value": "sql-ecommerce-lakehouse"
+		},
+		"ls_sql_ecommerce_lakehouse_properties_typeProperties_userName": {
+			"value": "getnkit"
+		}
+	}
+}
