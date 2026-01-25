@@ -1,0 +1,17 @@
+{
+	"name": "ls_sql_ecommerce_lakehouse",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sql-srv-ecommerce-lakehouse.database.windows.net",
+			"database": "sql-ecommerce-lakehouse",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "getnkit",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDVCMjEwRTg1LUJCNDMtNDlCQi1BQjM3LUI1N0IyNDNENzU3RF9hM2Y2ZWYwOC0zMmM0LTQxZTYtODIwNi00MTI2N2Q1ZmVhNGEiDQp9"
+		}
+	}
+}

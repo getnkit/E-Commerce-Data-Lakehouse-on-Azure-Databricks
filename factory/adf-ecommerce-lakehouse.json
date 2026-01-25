@@ -1,0 +1,9 @@
+{
+	"name": "adf-ecommerce-lakehouse",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "35c1a2b5-59fa-45bf-8f04-33fd675157d3",
+		"tenantId": "fd206715-7509-4ae5-9b96-76bb97886a84"
+	}
+}
