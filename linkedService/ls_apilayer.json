@@ -1,0 +1,12 @@
+{
+	"name": "ls_apilayer",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://api.apilayer.com/exchangerates_data",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
