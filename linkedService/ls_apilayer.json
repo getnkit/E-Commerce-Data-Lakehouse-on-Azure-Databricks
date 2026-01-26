@@ -6,7 +6,18 @@
 		"typeProperties": {
 			"url": "https://api.apilayer.com/exchangerates_data",
 			"enableServerCertificateValidation": true,
-			"authenticationType": "Anonymous"
+			"authenticationType": "Anonymous",
+			"authHeaders": {
+				"APIKey": {
+					"type": "AzureKeyVaultSecret",
+					"store": {
+						"referenceName": "ls_kv_ecommerce_lakehouse",
+						"type": "LinkedServiceReference"
+					},
+					"secretName": "apilayer-apikey",
+					"secretVersion": "47aed40003844aaab7292e508aa95054"
+				}
+			}
 		}
 	}
 }
