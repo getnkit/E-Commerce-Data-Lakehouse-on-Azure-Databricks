@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "/latest?base=USD&symbols=THB"
+				"relativeUrl": "latest?base=USD&symbols=THB"
 			}
 		},
 		"schema": {}
