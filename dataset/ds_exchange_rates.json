@@ -1,0 +1,20 @@
+{
+	"name": "ds_exchange_rates",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_ecommerce_lakehouse",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "rates.json",
+				"folderPath": "exchange_rates",
+				"fileSystem": "bronze"
+			}
+		},
+		"schema": {}
+	}
+}
