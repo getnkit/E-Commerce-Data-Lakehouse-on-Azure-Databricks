@@ -15,6 +15,10 @@
 				"secretName": "vm-legacy-server-password",
 				"secretVersion": "0af7bb7eebeb466585bd89d105bf575f"
 			}
+		},
+		"connectVia": {
+			"referenceName": "shir-ecommerce-lakehouse",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
