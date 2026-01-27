@@ -5,12 +5,23 @@
 			"referenceName": "ls_apilayer",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"p_base": {
+				"type": "string"
+			},
+			"p_symbol": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "latest?base=USD&symbols=THB"
+				"relativeUrl": {
+					"value": "latest?base=@{dataset().p_base}&symbols=@{dataset().p_symbol}",
+					"type": "Expression"
+				}
 			}
 		},
 		"schema": {}
