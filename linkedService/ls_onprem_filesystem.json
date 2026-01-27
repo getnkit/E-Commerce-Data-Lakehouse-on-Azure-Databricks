@@ -1,0 +1,20 @@
+{
+	"name": "ls_onprem_filesystem",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Legacy_Data",
+			"userId": "getnkit",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_kv_ecommerce_lakehouse",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "vm-legacy-server-password",
+				"secretVersion": "0af7bb7eebeb466585bd89d105bf575f"
+			}
+		}
+	}
+}
