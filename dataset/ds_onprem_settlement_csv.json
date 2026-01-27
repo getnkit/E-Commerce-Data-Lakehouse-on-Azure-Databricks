@@ -1,0 +1,22 @@
+{
+	"name": "ds_onprem_settlement_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_onprem_filesystem",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "settlement_20250126.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
