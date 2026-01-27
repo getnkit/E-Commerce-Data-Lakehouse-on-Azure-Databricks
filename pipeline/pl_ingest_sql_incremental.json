@@ -1,5 +1,5 @@
 {
-	"name": "incremental_loop",
+	"name": "pl_ingest_sql_incremental",
 	"properties": {
 		"activities": [
 			{
