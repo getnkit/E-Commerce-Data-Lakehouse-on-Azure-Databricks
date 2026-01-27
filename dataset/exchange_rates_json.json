@@ -6,13 +6,11 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"base_currency": {
-				"type": "string",
-				"defaultValue": "USD"
+			"p_base": {
+				"type": "string"
 			},
-			"target_currency": {
-				"type": "string",
-				"defaultValue": "THB"
+			"p_symbol": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
