@@ -1,0 +1,6 @@
+{
+	"name": "shir-ecommerce-lakehouse",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
