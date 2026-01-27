@@ -5,7 +5,7 @@
 		"type": "FileServer",
 		"typeProperties": {
 			"host": "C:\\Legacy_Data",
-			"userId": "vm-legacy-serve\\getnkit",
+			"userId": "getnkit",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
