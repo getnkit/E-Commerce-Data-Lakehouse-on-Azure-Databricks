@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "C:\\Legacy_Data",
+			"host": "C:\\Legacy_Data\\",
 			"userId": "vm-legacy-serve\\getnkit",
 			"password": {
 				"type": "AzureKeyVaultSecret",
