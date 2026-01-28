@@ -6,10 +6,10 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"p_base": {
+			"base": {
 				"type": "string"
 			},
-			"p_symbol": {
+			"symbol": {
 				"type": "string"
 			}
 		},
@@ -19,7 +19,7 @@
 			"location": {
 				"type": "HttpServerLocation",
 				"relativeUrl": {
-					"value": "latest?base=@{dataset().p_base}&symbols=@{dataset().p_symbol}",
+					"value": "latest?base=@{dataset().base}&symbols=@{dataset().symbol}",
 					"type": "Expression"
 				}
 			}
