@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "FileServerLocation",
-				"fileName": "settlement_20250126.csv"
+				"fileName": "settlement_20251230.csv",
+				"folderPath": "settlements"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
