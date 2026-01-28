@@ -48,6 +48,74 @@
 								"enableStaging": false,
 								"translator": {
 									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "TRX_ID",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "settlement_id",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "REF_ORD_NO",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "order_id",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "EXT_PAY_REF",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "payment_ref",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "MDR_PCT",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "fee_rate",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "TXN_STAT_CD",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "settlement_status",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "STL_DT",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "settlement_date",
+												"physicalType": "String"
+											}
+										}
+									],
 									"typeConversion": true,
 									"typeConversionSettings": {
 										"allowDataTruncation": true,
@@ -57,7 +125,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_onprem_settlement_csv",
+									"referenceName": "ds_onprem_csv",
 									"type": "DatasetReference"
 								}
 							],
@@ -72,6 +140,87 @@
 				}
 			}
 		],
+		"parameters": {
+			"p_mapping_rules": {
+				"type": "object",
+				"defaultValue": {
+					"type": "TabularTranslator",
+					"mappings": [
+						{
+							"source": {
+								"name": "TRX_ID",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "settlement_id",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "REF_ORD_NO",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "order_id",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "EXT_PAY_REF",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "payment_ref",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "MDR_PCT",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "fee_rate",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "TXN_STAT_CD",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "settlement_status",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "STL_DT",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "settlement_date",
+								"physicalType": "String"
+							}
+						}
+					],
+					"typeConversion": true,
+					"typeConversionSettings": {
+						"allowDataTruncation": true,
+						"treatBooleanAsNumber": false
+					}
+				}
+			}
+		},
 		"annotations": []
 	}
 }
