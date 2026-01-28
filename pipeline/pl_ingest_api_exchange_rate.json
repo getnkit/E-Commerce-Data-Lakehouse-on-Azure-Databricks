@@ -42,11 +42,11 @@
 						"referenceName": "exchange_rates_json",
 						"type": "DatasetReference",
 						"parameters": {
-							"p_base": {
+							"base": {
 								"value": "@pipeline().parameters.base_currency",
 								"type": "Expression"
 							},
-							"p_symbol": {
+							"symbol": {
 								"value": "@pipeline().parameters.target_currency",
 								"type": "Expression"
 							}
