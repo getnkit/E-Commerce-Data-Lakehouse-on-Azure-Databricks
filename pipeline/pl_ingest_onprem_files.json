@@ -100,12 +100,20 @@
 					{
 						"file_name": "settlement_20251230.csv",
 						"source_folder": "settlements",
-						"target_folder": "settlements/2025/12"
+						"target_folder": "settlements/2025/12",
+						"map_type": "SETTLEMENT"
 					},
 					{
 						"file_name": "settlement_20260101.csv",
 						"source_folder": "settlements",
-						"target_folder": "settlements/2026/01"
+						"target_folder": "settlements/2026/01",
+						"map_type": "SETTLEMENT"
+					},
+					{
+						"file_name": "shipping_20260101.csv",
+						"source_folder": "shipping",
+						"target_folder": "shipping/2026/01",
+						"map_type": "SHIPPING"
 					}
 				]
 			},
