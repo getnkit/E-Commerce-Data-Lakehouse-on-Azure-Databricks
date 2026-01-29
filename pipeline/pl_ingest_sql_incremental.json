@@ -433,7 +433,7 @@
 			}
 		],
 		"parameters": {
-			"loop_input": {
+			"p_table_list": {
 				"type": "array",
 				"defaultValue": [
 					{
