@@ -25,21 +25,11 @@
 							"type": "JsonReadSettings"
 						}
 					},
-					"sink": {
-						"type": "JsonSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
-							"copyBehavior": "PreserveHierarchy"
-						},
-						"formatSettings": {
-							"type": "JsonWriteSettings"
-						}
-					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "exchange_rates_json",
+						"referenceName": "ds_rest_exchange_rates",
 						"type": "DatasetReference",
 						"parameters": {
 							"base": {
@@ -51,12 +41,6 @@
 								"type": "Expression"
 							}
 						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "ds_exchange_rates",
-						"type": "DatasetReference"
 					}
 				]
 			}

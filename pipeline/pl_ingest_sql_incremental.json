@@ -78,7 +78,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "parquet_dynamic",
+									"referenceName": "ds_dynamic_parquet",
 									"type": "DatasetReference",
 									"parameters": {
 										"container": "bronze",
@@ -143,7 +143,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"dataset": {
-												"referenceName": "parquet_dynamic",
+												"referenceName": "ds_dynamic_parquet",
 												"type": "DatasetReference",
 												"parameters": {
 													"container": "bronze",
@@ -215,7 +215,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "json_dynamic",
+												"referenceName": "ds_dynamic_json",
 												"type": "DatasetReference",
 												"parameters": {
 													"container": "bronze",
@@ -274,7 +274,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "json_dynamic",
+									"referenceName": "ds_dynamic_json",
 									"type": "DatasetReference",
 									"parameters": {
 										"container": "bronze",
@@ -357,7 +357,7 @@
 												}
 											},
 											"dataset": {
-												"referenceName": "json_dynamic",
+												"referenceName": "ds_dynamic_json",
 												"type": "DatasetReference",
 												"parameters": {
 													"container": "bronze",

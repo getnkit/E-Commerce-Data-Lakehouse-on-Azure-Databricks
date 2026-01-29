@@ -57,7 +57,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_onprem_csv",
+									"referenceName": "ds_onprem_dynamic_csv",
 									"type": "DatasetReference",
 									"parameters": {
 										"folder": {
