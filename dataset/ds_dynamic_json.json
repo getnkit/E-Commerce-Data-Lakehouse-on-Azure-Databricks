@@ -1,5 +1,5 @@
 {
-	"name": "json_dynamic",
+	"name": "ds_dynamic_json",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_ecommerce_lakehouse",
