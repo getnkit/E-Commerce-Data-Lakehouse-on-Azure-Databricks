@@ -1,5 +1,5 @@
 {
-	"name": "pl_ingest_onprem_file",
+	"name": "pl_ingest_onprem_files",
 	"properties": {
 		"activities": [
 			{
@@ -14,7 +14,7 @@
 					},
 					"activities": [
 						{
-							"name": "MigrateOnPremFiles",
+							"name": "CopyFileToBronze",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -51,7 +51,7 @@
 								},
 								"enableStaging": false,
 								"translator": {
-									"value": "@pipeline().parameters.p_mapping_rules",
+									"value": "@if(\n    equals(item().map_type, 'SETTLEMENT'),\n    pipeline().parameters.p_mapping_settlement,\n    pipeline().parameters.p_mapping_shipping)\n)",
 									"type": "Expression"
 								}
 							},
@@ -73,8 +73,19 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_bronze_settlement",
-									"type": "DatasetReference"
+									"referenceName": "ds_bronze_csv",
+									"type": "DatasetReference",
+									"parameters": {
+										"container": "bronze",
+										"folder": {
+											"value": "@item().target_folder",
+											"type": "Expression"
+										},
+										"file": {
+											"value": "@item().file_name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
@@ -83,7 +94,22 @@
 			}
 		],
 		"parameters": {
-			"p_mapping_rules": {
+			"p_file_list": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"file_name": "settlement_20251230.csv",
+						"source_folder": "settlements",
+						"target_folder": "settlements/2025/12"
+					},
+					{
+						"file_name": "settlement_20260101.csv",
+						"source_folder": "settlements",
+						"target_folder": "settlements/2026/01"
+					}
+				]
+			},
+			"p_mapping_settlement": {
 				"type": "object",
 				"defaultValue": {
 					"type": "TabularTranslator",
@@ -162,20 +188,95 @@
 					}
 				}
 			},
-			"p_file_list": {
-				"type": "array",
-				"defaultValue": [
-					{
-						"file_name": "settlement_20251230.csv",
-						"source_folder": "settlements",
-						"target_folder": "settlements/2025/12"
-					},
-					{
-						"file_name": "settlement_20260101.csv",
-						"source_folder": "settlements",
-						"target_folder": "settlements/2026/01"
+			"p_mapping_shipping": {
+				"type": "object",
+				"defaultValue": {
+					"type": "TabularTranslator",
+					"mappings": [
+						{
+							"source": {
+								"name": "SHP_ID",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "shipment_id",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "REF_ORD",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "order_id",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "AWB_NO",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "tracking_number",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "LOG_PROV",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "carrier_name",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "STS_CD",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "shipping_status",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "WT_GM",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "weight_grams",
+								"physicalType": "String"
+							}
+						},
+						{
+							"source": {
+								"name": "PK_DT",
+								"type": "String",
+								"physicalType": "String"
+							},
+							"sink": {
+								"name": "pickup_date",
+								"physicalType": "String"
+							}
+						}
+					],
+					"typeConversion": true,
+					"typeConversionSettings": {
+						"allowDataTruncation": true,
+						"treatBooleanAsNumber": false
 					}
-				]
+				}
 			}
 		},
 		"annotations": []
