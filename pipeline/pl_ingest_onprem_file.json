@@ -8,9 +8,13 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.p_file_list",
+						"type": "Expression"
+					},
 					"activities": [
 						{
-							"name": "CopyOnPremFiles",
+							"name": "MigrateOnPremFiles",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -53,8 +57,18 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_onprem_file",
-									"type": "DatasetReference"
+									"referenceName": "ds_onprem_csv",
+									"type": "DatasetReference",
+									"parameters": {
+										"folder": {
+											"value": "@item().source_folder",
+											"type": "Expression"
+										},
+										"file": {
+											"value": "@item().file_name",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
@@ -147,6 +161,21 @@
 						"treatBooleanAsNumber": false
 					}
 				}
+			},
+			"p_file_list": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"file_name": "settlement_20251230.csv",
+						"source_folder": "settlements",
+						"target_folder": "settlements/2025/12"
+					},
+					{
+						"file_name": "settlement_20260101.csv",
+						"source_folder": "settlements",
+						"target_folder": "settlements/2026/01"
+					}
+				]
 			}
 		},
 		"annotations": []
