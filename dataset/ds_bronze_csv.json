@@ -1,5 +1,5 @@
 {
-	"name": "ds_bronze_settlement",
+	"name": "ds_bronze_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_ecommerce_lakehouse",
@@ -18,9 +18,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "settlement_20250126.csv",
-				"folderPath": "settlement",
-				"fileSystem": "bronze"
+				"fileName": {
+					"value": "@dataset().file",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().folder",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
