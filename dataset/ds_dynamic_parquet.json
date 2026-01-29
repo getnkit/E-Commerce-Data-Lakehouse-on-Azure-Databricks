@@ -1,5 +1,5 @@
 {
-	"name": "parquet_dynamic",
+	"name": "ds_dynamic_parquet",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_ecommerce_lakehouse",
