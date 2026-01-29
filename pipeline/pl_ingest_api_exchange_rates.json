@@ -7,7 +7,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Current",
+						"activity": "SetCurrentDate",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -65,13 +65,17 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"p_container": "bronze",
-							"p_folder": "exchange_rates"
+							"p_folder": "exchange_rates",
+							"p_file": {
+								"value": "@concat('exchange_rates_', variables('v_current_date'), '.json')",
+								"type": "Expression"
+							}
 						}
 					}
 				]
 			},
 			{
-				"name": "Current",
+				"name": "SetCurrentDate",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"policy": {
@@ -80,9 +84,9 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "current",
+					"variableName": "v_current_date",
 					"value": {
-						"value": "@utcNow()",
+						"value": "@formatDateTime(utcnow(), 'yyyyMMdd')",
 						"type": "Expression"
 					}
 				}
@@ -99,7 +103,7 @@
 			}
 		},
 		"variables": {
-			"current": {
+			"v_current_date": {
 				"type": "String"
 			}
 		},

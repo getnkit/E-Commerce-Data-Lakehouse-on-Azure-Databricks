@@ -98,7 +98,7 @@
 														"type": "DatasetReference",
 														"parameters": {
 															"p_container": "bronze",
-															"p_folder": "settlement",
+															"p_folder": "settlements",
 															"p_file": {
 																"value": "@item().name",
 																"type": "Expression"
@@ -110,10 +110,10 @@
 										]
 									},
 									{
-										"value": "shipping",
+										"value": "shipment",
 										"activities": [
 											{
-												"name": "CopyFileToShipping",
+												"name": "CopyFileToShipment",
 												"type": "Copy",
 												"dependsOn": [],
 												"policy": {
@@ -150,7 +150,7 @@
 													},
 													"enableStaging": false,
 													"translator": {
-														"value": "@pipeline().parameters.p_mapping_shipping",
+														"value": "@pipeline().parameters.p_mapping_shipment",
 														"type": "Expression"
 													}
 												},
@@ -176,7 +176,7 @@
 														"type": "DatasetReference",
 														"parameters": {
 															"p_container": "bronze",
-															"p_folder": "shipping",
+															"p_folder": "shipments",
 															"p_file": {
 																"value": "@item().name",
 																"type": "Expression"
@@ -214,7 +214,10 @@
 								"value": "@string('')",
 								"type": "Expression"
 							},
-							"p_file": "*.csv"
+							"p_file": {
+								"value": "@string('')",
+								"type": "Expression"
+							}
 						}
 					},
 					"fieldList": [
@@ -222,6 +225,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -310,7 +314,7 @@
 					}
 				}
 			},
-			"p_mapping_shipping": {
+			"p_mapping_shipment": {
 				"type": "object",
 				"defaultValue": {
 					"type": "TabularTranslator",
