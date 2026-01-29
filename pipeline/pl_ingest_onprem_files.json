@@ -51,7 +51,7 @@
 								},
 								"enableStaging": false,
 								"translator": {
-									"value": "@if(\n    equals(item().map_type, 'SETTLEMENT'),\n    pipeline().parameters.p_mapping_settlement,\n    pipeline().parameters.p_mapping_shipping)\n)",
+									"value": "@if(equals(item().map_type, 'SETTLEMENT'), pipeline().parameters.p_mapping_settlement, pipeline().parameters.p_mapping_shipping)",
 									"type": "Expression"
 								}
 							},
