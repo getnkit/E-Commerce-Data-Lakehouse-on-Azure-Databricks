@@ -57,7 +57,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_onprem_dynamic_csv",
+									"referenceName": "ds_filesystem_dynamic_csv",
 									"type": "DatasetReference",
 									"parameters": {
 										"folder": {
@@ -73,7 +73,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_dynamic_csv",
+									"referenceName": "ds_adls_dynamic_csv",
 									"type": "DatasetReference",
 									"parameters": {
 										"container": "bronze",

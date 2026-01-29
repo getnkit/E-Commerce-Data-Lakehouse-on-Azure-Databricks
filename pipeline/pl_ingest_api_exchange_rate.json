@@ -29,7 +29,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_rest_exchange_rates",
+						"referenceName": "ds_http_exchange_rates",
 						"type": "DatasetReference",
 						"parameters": {
 							"base": {

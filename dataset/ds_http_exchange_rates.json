@@ -1,5 +1,5 @@
 {
-	"name": "ds_rest_exchange_rates",
+	"name": "ds_http_exchange_rates",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_apilayer",

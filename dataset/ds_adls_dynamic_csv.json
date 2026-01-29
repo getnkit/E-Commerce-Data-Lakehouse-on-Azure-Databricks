@@ -1,5 +1,5 @@
 {
-	"name": "ds_dynamic_csv",
+	"name": "ds_adls_dynamic_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_ecommerce_lakehouse",

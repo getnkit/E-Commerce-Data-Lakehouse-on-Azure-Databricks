@@ -1,5 +1,5 @@
 {
-	"name": "sql_ecommerce_lakehouse",
+	"name": "ds_azuresql_ecommerce",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_sql_ecommerce_lakehouse",
