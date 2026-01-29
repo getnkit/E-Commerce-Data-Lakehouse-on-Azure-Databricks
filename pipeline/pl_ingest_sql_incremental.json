@@ -11,7 +11,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@pipeline().parameters.loop_input",
+						"value": "@pipeline().parameters.p_table_list",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -81,12 +81,12 @@
 									"referenceName": "ds_adls_dynamic_parquet",
 									"type": "DatasetReference",
 									"parameters": {
-										"container": "bronze",
-										"folder": {
+										"p_container": "bronze",
+										"p_folder": {
 											"value": "@item().table",
 											"type": "Expression"
 										},
-										"file": {
+										"p_file": {
 											"value": "@concat(item().table, '_', variables('current'))",
 											"type": "Expression"
 										}
@@ -146,12 +146,12 @@
 												"referenceName": "ds_adls_dynamic_parquet",
 												"type": "DatasetReference",
 												"parameters": {
-													"container": "bronze",
-													"folder": {
+													"p_container": "bronze",
+													"p_folder": {
 														"value": "@item().table",
 														"type": "Expression"
 													},
-													"file": {
+													"p_file": {
 														"value": "@concat(item().table, '_', variables('current'))",
 														"type": "Expression"
 													}
@@ -218,12 +218,12 @@
 												"referenceName": "ds_adls_dynamic_json",
 												"type": "DatasetReference",
 												"parameters": {
-													"container": "bronze",
-													"folder": {
+													"p_container": "bronze",
+													"p_folder": {
 														"value": "@concat(item().table, '/cdc')",
 														"type": "Expression"
 													},
-													"file": "cdc.json"
+													"p_file": "cdc.json"
 												}
 											}
 										]
@@ -277,12 +277,12 @@
 									"referenceName": "ds_adls_dynamic_json",
 									"type": "DatasetReference",
 									"parameters": {
-										"container": "bronze",
-										"folder": {
+										"p_container": "bronze",
+										"p_folder": {
 											"value": "@concat(item().table, '/cdc')",
 											"type": "Expression"
 										},
-										"file": "cdc.json"
+										"p_file": "cdc.json"
 									}
 								},
 								"fieldList": [
@@ -360,12 +360,12 @@
 												"referenceName": "ds_adls_dynamic_json",
 												"type": "DatasetReference",
 												"parameters": {
-													"container": "bronze",
-													"folder": {
+													"p_container": "bronze",
+													"p_folder": {
 														"value": "@concat(item().table, '/cdc')",
 														"type": "Expression"
 													},
-													"file": "cdc.json"
+													"p_file": "cdc.json"
 												}
 											}
 										}

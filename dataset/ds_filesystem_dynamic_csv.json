@@ -6,10 +6,10 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"folder": {
+			"p_folder": {
 				"type": "string"
 			},
-			"file": {
+			"p_file": {
 				"type": "string"
 			}
 		},
@@ -19,11 +19,11 @@
 			"location": {
 				"type": "FileServerLocation",
 				"fileName": {
-					"value": "@dataset().file",
+					"value": "@dataset().p_file",
 					"type": "Expression"
 				},
 				"folderPath": {
-					"value": "@dataset().folder",
+					"value": "@dataset().p_folder",
 					"type": "Expression"
 				}
 			},

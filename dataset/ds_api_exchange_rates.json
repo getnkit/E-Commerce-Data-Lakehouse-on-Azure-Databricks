@@ -1,15 +1,15 @@
 {
-	"name": "ds_http_exchange_rates",
+	"name": "ds_api_exchange_rates",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_apilayer",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"base": {
+			"p_base": {
 				"type": "string"
 			},
-			"symbol": {
+			"p_symbol": {
 				"type": "string"
 			}
 		},
@@ -19,7 +19,7 @@
 			"location": {
 				"type": "HttpServerLocation",
 				"relativeUrl": {
-					"value": "latest?base=@{dataset().base}&symbols=@{dataset().symbol}",
+					"value": "latest?base=@{dataset().p_base}&symbols=@{dataset().p_symbol}",
 					"type": "Expression"
 				}
 			}

@@ -1,9 +1,9 @@
 {
-	"name": "pl_ingest_api_exchange_rate",
+	"name": "pl_ingest_api_exchange_rates",
 	"properties": {
 		"activities": [
 			{
-				"name": "ingest_exchange_rates",
+				"name": "CopyExchangeRatesToBronze",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -25,32 +25,51 @@
 							"type": "JsonReadSettings"
 						}
 					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_http_exchange_rates",
+						"referenceName": "ds_api_exchange_rates",
 						"type": "DatasetReference",
 						"parameters": {
-							"base": {
-								"value": "@pipeline().parameters.base_currency",
+							"p_base": {
+								"value": "@pipeline().parameters.p_base_currency",
 								"type": "Expression"
 							},
-							"symbol": {
-								"value": "@pipeline().parameters.target_currency",
+							"p_symbol": {
+								"value": "@pipeline().parameters.p_target_currency",
 								"type": "Expression"
 							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_adls_dynamic_json",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_container": "bronze",
+							"p_folder": "exchange_rates"
 						}
 					}
 				]
 			}
 		],
 		"parameters": {
-			"base_currency": {
+			"p_base_currency": {
 				"type": "string",
 				"defaultValue": "USD"
 			},
-			"target_currency": {
+			"p_target_currency": {
 				"type": "string",
 				"defaultValue": "THB"
 			}
