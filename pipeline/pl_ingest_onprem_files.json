@@ -73,7 +73,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_bronze_csv",
+									"referenceName": "ds_dynamic_csv",
 									"type": "DatasetReference",
 									"parameters": {
 										"container": "bronze",
