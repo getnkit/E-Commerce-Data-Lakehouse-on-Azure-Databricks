@@ -81,7 +81,7 @@
 									"parameters": {
 										"p_container": "bronze",
 										"p_folder": {
-											"value": "@item().table",
+											"value": "@{item().table}/@{formatDateTime(utcnow(), 'yyyy')}/@{formatDateTime(utcnow(), 'MM')}/@{formatDateTime(utcnow(), 'dd')}",
 											"type": "Expression"
 										},
 										"p_file": {
