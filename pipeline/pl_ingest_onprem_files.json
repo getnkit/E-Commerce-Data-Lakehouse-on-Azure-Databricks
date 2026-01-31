@@ -320,6 +320,62 @@
 						"type": "DelimitedTextReadSettings"
 					}
 				}
+			},
+			{
+				"name": "SendAlertSuccess",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "ForEachFile",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-25.southeastasia.logic.azure.com:443/workflows/7dda7d18216d4cf684a0420d343bbbf7/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=peN0K0drJ3phnGDf_ULP3cM6J_IdUIJKVODPnu7yyB4",
+					"body": {
+						"value": "{\n    \"pipeline_name\": \"@{pipeline().Pipeline}\",\n    \"pipeline_runId\": \"@{pipeline().RunId}\",\n    \"status\": \"Succeeded\",\n    \"message\": \"Job Done!\"\n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SendAlertFailed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "ForEachFile",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-25.southeastasia.logic.azure.com:443/workflows/7dda7d18216d4cf684a0420d343bbbf7/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=peN0K0drJ3phnGDf_ULP3cM6J_IdUIJKVODPnu7yyB4",
+					"body": {
+						"value": "{\n    \"pipeline_name\": \"@{pipeline().Pipeline}\",\n    \"pipeline_runId\": \"@{pipeline().RunId}\",\n    \"status\": \"Failed\",\n    \"message\": \"Please check ADF Monitor for details.\"\n}",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
