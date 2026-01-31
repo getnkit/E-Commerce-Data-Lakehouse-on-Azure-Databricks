@@ -1,5 +1,5 @@
 {
-	"name": "pl_ingest_sql_incremental",
+	"name": "pl_ingest_sql_incremental_file_ctrl",
 	"properties": {
 		"activities": [
 			{
@@ -15,7 +15,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "CopyToBronzeIncremental",
+							"name": "CopyToLandingIncremental",
 							"type": "Copy",
 							"dependsOn": [
 								{
@@ -114,7 +114,7 @@
 							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "CopyToBronzeIncremental",
+									"activity": "CopyToLandingIncremental",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -123,7 +123,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('CopyToBronzeIncremental').output.dataRead, 0)",
+									"value": "@greater(activity('CopyToLandingIncremental').output.dataRead, 0)",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [

@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CopyToBronzeExchangeRates",
+				"name": "CopyToLandingExchangeRates",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -64,8 +64,11 @@
 						"referenceName": "ds_adls_dynamic_json",
 						"type": "DatasetReference",
 						"parameters": {
-							"p_container": "bronze",
-							"p_folder": "exchange_rates",
+							"p_container": "landing",
+							"p_folder": {
+								"value": "external_data/exchange_rates/@{formatDateTime(utcnow(), 'yyyy')}/@{formatDateTime(utcnow(), 'MM')}/@{formatDateTime(utcnow(), 'dd')}",
+								"type": "Expression"
+							},
 							"p_file": {
 								"value": "@concat('exchange_rates_', variables('v_current_date'), '.json')",
 								"type": "Expression"
