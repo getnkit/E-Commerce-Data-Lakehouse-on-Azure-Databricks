@@ -77,7 +77,7 @@
 												},
 												"inputs": [
 													{
-														"referenceName": "ds_file_dynamic_csv",
+														"referenceName": "ds_filesystem_dynamic_csv",
 														"type": "DatasetReference",
 														"parameters": {
 															"p_folder": {
@@ -127,7 +127,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"dataset": {
-														"referenceName": "ds_file_dynamic_csv",
+														"referenceName": "ds_filesystem_dynamic_csv",
 														"type": "DatasetReference",
 														"parameters": {
 															"p_folder": {
@@ -196,7 +196,7 @@
 												},
 												"inputs": [
 													{
-														"referenceName": "ds_file_dynamic_csv",
+														"referenceName": "ds_filesystem_dynamic_csv",
 														"type": "DatasetReference",
 														"parameters": {
 															"p_folder": {
@@ -246,7 +246,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"dataset": {
-														"referenceName": "ds_file_dynamic_csv",
+														"referenceName": "ds_filesystem_dynamic_csv",
 														"type": "DatasetReference",
 														"parameters": {
 															"p_folder": {
@@ -292,7 +292,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "ds_file_dynamic_csv",
+						"referenceName": "ds_filesystem_dynamic_csv",
 						"type": "DatasetReference",
 						"parameters": {
 							"p_folder": {
