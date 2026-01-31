@@ -25,7 +25,7 @@
 									]
 								},
 								{
-									"activity": "IfCDCFileExists",
+									"activity": "IfWatermarkFileExists",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -188,7 +188,7 @@
 											"source": {
 												"type": "AzureSqlSource",
 												"sqlReaderQuery": {
-													"value": "SELECT '@{activity('GetMaxWatermark').output.resultSets[0].rows[0].cdc}' AS cdc",
+													"value": "SELECT '@{activity('GetMaxWatermark').output.resultSets[0].rows[0].watermark_value}' AS watermark_value",
 													"type": "Expression"
 												},
 												"queryTimeout": "02:00:00",
@@ -218,10 +218,10 @@
 												"parameters": {
 													"p_container": "bronze",
 													"p_folder": {
-														"value": "@concat(item().table, '/cdc')",
+														"value": "@concat(item().table, '/watermark')",
 														"type": "Expression"
 													},
-													"p_file": "cdc.json"
+													"p_file": "watermark.json"
 												}
 											}
 										]
@@ -247,7 +247,7 @@
 												{
 													"type": "Query",
 													"text": {
-														"value": "SELECT MAX(@{item().cdc_col}) AS cdc FROM @{item().schema}.@{item().table}",
+														"value": "SELECT MAX(@{item().watermark_column}) as watermark_value FROM @{item().schema}.@{item().table}",
 														"type": "Expression"
 													}
 												}
@@ -259,7 +259,7 @@
 							}
 						},
 						{
-							"name": "GetCDCMetadata",
+							"name": "GetWatermarkMetadata",
 							"type": "GetMetadata",
 							"dependsOn": [],
 							"policy": {
@@ -297,11 +297,11 @@
 							}
 						},
 						{
-							"name": "IfCDCFileExists",
+							"name": "IfWatermarkFileExists",
 							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "GetCDCMetadata",
+									"activity": "GetWatermarkMetadata",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -310,7 +310,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@activity('GetCDCMetadata').output.exists",
+									"value": "@activity('GetWatermarkMetadata').output.exists",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
@@ -331,7 +331,7 @@
 								],
 								"ifTrueActivities": [
 									{
-										"name": "LookupLastCDC",
+										"name": "LookupLastWatermark",
 										"type": "Lookup",
 										"dependsOn": [],
 										"policy": {
@@ -369,11 +369,11 @@
 										}
 									},
 									{
-										"name": "SetWatermarkFromCDC",
+										"name": "SetWatermarkFromLookup",
 										"type": "SetVariable",
 										"dependsOn": [
 											{
-												"activity": "LookupLastCDC",
+												"activity": "LookupLastWatermark",
 												"dependencyConditions": [
 													"Succeeded"
 												]
@@ -387,7 +387,7 @@
 										"typeProperties": {
 											"variableName": "v_watermark",
 											"value": {
-												"value": "@activity('LookupLastCDC').output.firstRow.cdc",
+												"value": "@activity('LookupLastWatermark').output.firstRow.cdc",
 												"type": "Expression"
 											}
 										}
