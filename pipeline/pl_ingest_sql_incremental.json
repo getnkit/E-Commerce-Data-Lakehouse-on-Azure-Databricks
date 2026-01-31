@@ -434,33 +434,33 @@
 				"defaultValue": [
 					{
 						"schema": "dbo",
-						"table": "dim_customer",
-						"cdc_col": "updated_at",
-						"from_date": ""
+						"table": "customers",
+						"watermark_column": "updated_at",
+						"initial_watermark": ""
 					},
 					{
 						"schema": "dbo",
-						"table": "dim_merchant",
-						"cdc_col": "updated_at",
-						"from_date": ""
+						"table": "merchants",
+						"watermark_column": "updated_at",
+						"initial_watermark": ""
 					},
 					{
 						"schema": "dbo",
-						"table": "dim_product",
-						"cdc_col": "updated_at",
-						"from_date": ""
+						"table": "products",
+						"watermark_column": "updated_at",
+						"initial_watermark": ""
 					},
 					{
 						"schema": "dbo",
-						"table": "dim_date",
-						"cdc_col": "date",
-						"from_date": ""
+						"table": "orders",
+						"watermark_column": "updated_at",
+						"initial_watermark": ""
 					},
 					{
 						"schema": "dbo",
-						"table": "fact_sales",
-						"cdc_col": "txn_timestamp",
-						"from_date": ""
+						"table": "order_details",
+						"watermark_column": "updated_at",
+						"initial_watermark": ""
 					}
 				]
 			}
