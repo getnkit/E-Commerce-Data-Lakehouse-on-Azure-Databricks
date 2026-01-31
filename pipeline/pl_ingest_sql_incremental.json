@@ -3,10 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "incremental_tables",
+				"name": "ForEachIncrementalTable",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
@@ -17,7 +15,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "CopySQLToBronze",
+							"name": "CopyToBronzeIncremental",
 							"type": "Copy",
 							"dependsOn": [
 								{
@@ -45,7 +43,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "SELECT * FROM @{item().schema}.@{item().table} \nWHERE @{item().cdc_col} > '@{if(empty(item().from_date), variables('v_watermark'), item().from_date)}'",
+										"value": "SELECT * FROM @{item().schema}.@{item().table} \nWHERE @{item().watermark_column} > '@{if(empty(item().initial_watermark), variables('v_watermark'), item().initial_watermark)}'",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -72,7 +70,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_azuresql_ecommerce",
+									"referenceName": "ds_asql_ecommerce",
 									"type": "DatasetReference"
 								}
 							],
@@ -116,7 +114,7 @@
 							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "CopySQLToBronze",
+									"activity": "CopyToBronzeIncremental",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -125,12 +123,12 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('CopySQLToBronze').output.dataRead, 0)",
+									"value": "@greater(activity('CopyToBronzeIncremental').output.dataRead, 0)",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
 									{
-										"name": "DeleteEmptyFile",
+										"name": "DeleteEmptyIncrementalFile",
 										"type": "Delete",
 										"dependsOn": [],
 										"policy": {
@@ -209,7 +207,7 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "ds_azuresql_ecommerce",
+												"referenceName": "ds_asql_ecommerce",
 												"type": "DatasetReference"
 											}
 										],
@@ -261,7 +259,7 @@
 							}
 						},
 						{
-							"name": "CheckCDCFile",
+							"name": "GetCDCMetadata",
 							"type": "GetMetadata",
 							"dependsOn": [],
 							"policy": {
@@ -303,7 +301,7 @@
 							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "CheckCDCFile",
+									"activity": "GetCDCMetadata",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -312,7 +310,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@activity('CheckCDCFile').output.exists",
+									"value": "@activity('GetCDCMetadata').output.exists",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
@@ -403,11 +401,9 @@
 			{
 				"name": "alerts",
 				"type": "WebActivity",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
-						"activity": "incremental_tables",
+						"activity": "ForEachIncrementalTable",
 						"dependencyConditions": [
 							"Failed",
 							"Succeeded"
