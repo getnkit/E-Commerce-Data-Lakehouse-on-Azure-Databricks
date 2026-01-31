@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "C:\\Landing_Zone",
+			"host": "C:\\Data_Exports",
 			"userId": "getnkit",
 			"password": {
 				"type": "AzureKeyVaultSecret",
